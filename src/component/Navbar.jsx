@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from "../assets/logo4.PNG"
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -9,8 +9,17 @@ import { Link, useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const user = useSelector((store) => store.user)
   const dispatch = useDispatch()
-  const navigate=useNavigate()
-
+  const navigate = useNavigate()
+ 
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(BASE_URL + "/logout",{},{withCredentials:true})
+      dispatch(removeUser())
+      navigate("/login")
+    } catch (err) {
+      console.error(err)
+  }
+}
 
   return (
     <>
@@ -63,7 +72,7 @@ const Navbar = () => {
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
           </div>
