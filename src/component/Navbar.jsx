@@ -35,7 +35,7 @@ const Navbar = () => {
               <div className="flex items-center gap-3 px-2 py-1 rounded-lg bg-base-100 ">
                 <span className="text-base font-semibold text-accent">
                   Welcome, {user?.data?.FirstName || user?.FirstName || "User"}
-                  {console.log("Redux user state:", user)}
+                
                 </span>
                 <button
                   tabIndex={0}
