@@ -29,7 +29,7 @@ const UserCard = ({ user }) => {
   return (
     <div
       {...handlers}
-      className="max-w-sm mx-auto rounded-lg shadow-lg bg-base-200 p-4 cursor-grab select-none"
+      className="max-w-sm mx-auto h-fit my-3 rounded-lg shadow-lg bg-base-200 p-4 cursor-grab select-none"
       style={{ touchAction: "pan-y" }}
     >
       <img
@@ -38,7 +38,7 @@ const UserCard = ({ user }) => {
           "https://img.daisyui.com/images/profile/demo/gordon@192.webp"
         }
         alt={`${FirstName}'s profile`}
-        className="rounded-lg w-full h-64 object-cover"
+        className="rounded-lg w-full h-60 object-cover"
       />
       <div className="p-4">
         <h2 className="text-2xl font-bold mb-1">

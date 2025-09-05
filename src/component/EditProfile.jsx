@@ -192,7 +192,7 @@ const [profile, setProfile] = useState(
               LastName: lastName,
               age,
               gender,
-              skills: user?.skills || [],
+              skills: skills,
               profileImg: profile,
               about,
             }}

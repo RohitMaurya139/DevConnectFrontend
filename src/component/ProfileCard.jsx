@@ -5,7 +5,7 @@ const ProfileCard = ({ user }) => {
  
 
   const { FirstName, LastName, age, gender,skills, profileImg, about } = user ;
-            console.log(skills)
+           
   return (
     <div
       className="max-w-sm mx-auto rounded-lg shadow-lg bg-base-200 p-4 cursor-grab select-none"

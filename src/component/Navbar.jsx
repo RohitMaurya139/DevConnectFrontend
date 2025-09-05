@@ -35,7 +35,6 @@ const Navbar = () => {
               <div className="flex items-center gap-3 px-2 py-1 rounded-lg bg-base-100 ">
                 <span className="text-base font-semibold text-accent">
                   Welcome, {user?.data?.FirstName || user?.FirstName || "User"}
-                
                 </span>
                 <button
                   tabIndex={0}
@@ -63,13 +62,16 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <Link to={"/profile"} className="justify-between" >
+                <Link to={"/profile"} className="justify-between">
                   Profile
                   <span className="badge">New</span>
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to={"/connection"}>My Connection</Link>
+              </li>
+              <li>
+                <Link to={"/request"}>Request</Link>
               </li>
               <li>
                 <a onClick={handleLogout}>Logout</a>
