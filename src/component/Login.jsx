@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BASE_URL from '../utils/constants';
 const Login = () => {
   const navigate = useNavigate();
@@ -47,7 +47,13 @@ const Login = () => {
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                   </g>
                 </svg>
-                <input type="email" value={email} placeholder="mail@site.com" onChange={(e)=> setEmailId(e.target.value)} required />
+                <input
+                  type="email"
+                  value={email}
+                  placeholder="mail@site.com"
+                  onChange={(e) => setEmailId(e.target.value)}
+                  required
+                />
               </label>
               <div className="validator-hint hidden">
                 Enter valid email address
@@ -78,7 +84,7 @@ const Login = () => {
                   type="password"
                   value={password}
                   required
-                  onChange={(e)=> setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
                   minlength="8"
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -93,10 +99,22 @@ const Login = () => {
                 At least one uppercase letter
               </p>
             </div>
-            <p className='text-red-500 font-semibold'>{ error}</p>
+            <p className="text-red-500 font-semibold">{error}</p>
             <div className="card-actions justify-end mt-2">
-              <button className="btn btn-soft btn-accent" onClick={handelLogin}>Log In</button>
+              <button className="btn btn-soft btn-accent" onClick={handelLogin}>
+                Log In
+              </button>
             </div>
+            <p className="text-sm text-gray-100 mt-4">
+              New to DevConnect?{" "}
+              <Link
+                to="/signUp"
+                className="text-[#00d3bb] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
+                aria-label="Sign up for a new DevConnect account"
+              >
+                Sign Up
+              </Link>
+            </p>
           </div>
         </div>
       </div>

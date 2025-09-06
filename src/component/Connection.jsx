@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BASE_URL from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnection } from "../utils/connectionSlice";
+import Loading from './Loading'
 import ProfileCard from "./ProfileCard";
 
 const Connection = () => {
@@ -32,7 +33,7 @@ const Connection = () => {
 
   if (loading)
     return (
-      <h2 className="text-white text-center mt-10">Loading connections...</h2>
+      <h2 className="text-white text-center mt-10"><Loading/></h2>
     );
   if (error) return <h2 className="text-red-500 text-center mt-10">{error}</h2>;
   if (!connections.length)

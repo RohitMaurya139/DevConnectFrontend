@@ -8,6 +8,7 @@ import Store from "./utils/appStore"
 import Connection from './component/Connection';
 import Request from './component/Request';
 import Profile from './component/Profile';
+import SignUp from './component/SignUp';
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Body />}>
               <Route path="/" element={<Feed />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signUp" element={<SignUp />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/connection" element={<Connection />} />
               <Route path="/request" element={<Request />} />

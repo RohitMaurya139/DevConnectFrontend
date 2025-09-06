@@ -24,6 +24,10 @@ const Feed = () => {
   useEffect(() => {
     getFeed();
   }, [])
+  if (!feed) return;
+  if (feed.length === 0) {
+    return <p>No New User Found</p>
+  }
 return (
   <>
     {feed && (

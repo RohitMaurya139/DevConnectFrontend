@@ -1,34 +1,26 @@
-import React, { useState } from "react";
-import { useSwipeable } from "react-swipeable";
+
+import { Button } from "@mui/material";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+
+import BASE_URL from "../utils/constants";
+import { removeFeed } from "../utils/feedSlice";
 
 const UserCard = ({ user }) => {
-  const [swiped, setSwiped] = useState(false);
-  const [swipeDirection, setSwipeDirection] = useState(null);
+  const dispatch =useDispatch()
 
-  const { FirstName, LastName, age, gender, skills, profileImg,about } = user;
-
-  const handlers = useSwipeable({
-    onSwiped: (eventData) => {
-      setSwiped(true);
-      setSwipeDirection(eventData.dir);
-      console.log("Swiped!", eventData.dir);
-    },
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true,
-  });
-
-  if (swiped) {
-    return (
-      <div className="text-center py-10 text-xl font-semibold">
-        You swiped {swipeDirection === "Left" ? "Nope ❌" : "Yes ✅"} on{" "}
-        {FirstName}
-      </div>
-    );
+  const { _id,FirstName, LastName, age, gender, skills, profileImg, about } = user;
+  const handleRequest = async (status,toUserId) => {
+    try {
+      const res = await axios.post(BASE_URL + "/request/send/" + status + "/" + toUserId, {}, { withCredentials: true });
+     dispatch(removeFeed(toUserId))
+    } catch (err) {
+      console.err(err)
+    }
   }
 
   return (
     <div
-      {...handlers}
       className="max-w-sm mx-auto h-fit my-3 rounded-lg shadow-lg bg-base-200 p-4 cursor-grab select-none"
       style={{ touchAction: "pan-y" }}
     >
@@ -44,12 +36,24 @@ const UserCard = ({ user }) => {
         <h2 className="text-2xl font-bold mb-1">
           {FirstName} {LastName}, {age}
         </h2>
-              <p className="text-gray-200 mb-2">{gender}</p>
-              <p className="text-gray-200 mb-2">{about}</p>
+        <p className="text-gray-200 mb-2">{gender}</p>
+        <p className="text-gray-200 mb-2">{about}</p>
         <p className="mb-4">Skills: {skills?.join(", ")}</p>
         <div className="flex justify-around">
-          <button className="btn btn-error btn-circle btn-lg">❌</button>
-          <button className="btn btn-success btn-circle btn-lg">✅</button>
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={()=>handleRequest("ignored", _id)}
+          >
+            Reject
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={()=>handleRequest("interested", _id)}
+          >
+            Request
+          </Button>
         </div>
       </div>
     </div>
@@ -57,3 +61,4 @@ const UserCard = ({ user }) => {
 };
 
 export default UserCard;
+       

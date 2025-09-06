@@ -8,7 +8,7 @@ const ProfileCard = ({ user }) => {
            
   return (
     <div
-      className="max-w-sm mx-auto rounded-lg shadow-lg bg-base-200 p-4 cursor-grab select-none"
+      className="max-w-sm mx-auto rounded-lg shadow-lg bg-base-300 p-4 cursor-grab select-none"
       style={{ touchAction: "pan-y" }}
     >
       <img
