@@ -12,7 +12,7 @@ const UserCard = ({ user }) => {
   const { _id,FirstName, LastName, age, gender, skills, profileImg, about } = user;
   const handleRequest = async (status,toUserId) => {
     try {
-      const res = await axios.post(BASE_URL + "/request/send/" + status + "/" + toUserId, {}, { withCredentials: true });
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/request/send/${status}/${toUserId}`, {}, { withCredentials: true });
      dispatch(removeFeed(toUserId))
     } catch (err) {
       console.err(err)

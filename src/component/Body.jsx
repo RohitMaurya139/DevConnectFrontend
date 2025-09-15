@@ -13,7 +13,7 @@ const Body = () => {
   const user=useSelector((store)=>store.user)
    const fetchUser = async () => {
      try {
-       const res = await axios.get(BASE_URL + "/profile/view", {
+       const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/profile/view`, {
          withCredentials: true,
        });
        dispatch(addUser(res.data));

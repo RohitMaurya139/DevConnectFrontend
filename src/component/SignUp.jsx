@@ -42,7 +42,7 @@ const SignUp = () => {
     }
     try {
       const res = await axios.post(
-        BASE_URL + "/signup",
+        `${import.meta.env.VITE_BASE_URL}/signup`,
         {
           FirstName: firstName,
           LastName: lastName,

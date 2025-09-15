@@ -14,7 +14,7 @@ const Request = () => {
   const[showStatus,setShowStatus]=useState("")
   const reviewRequest = async (status, requestId) => {
     try {
-      const res = await axios.post(BASE_URL + "/request/review/" + status + "/" + requestId, {}, { withCredentials: true })
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/request/review/${status}/${requestId}`, {}, { withCredentials: true })
       setShowButton(!showButton)
       setShowStatus(status)
 

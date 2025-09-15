@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const handelLogin = async () => {
     try {
-      const result = await axios.post(BASE_URL+"/login", {
+      const result = await axios.post(`${import.meta.env.VITE_BASE_URL}/login`, {
         email,
         password,
       }, { withCredentials: true });

@@ -29,7 +29,7 @@ const [profile, setProfile] = useState(
   const saveProfile = async () => {
     try {
       const res = await axios.patch(
-        BASE_URL + "/profile/edit",
+       `${import.meta.env.VITE_BASE_URL}/profile/edit`,
         {
           FirstName: firstName,
           LastName: lastName,

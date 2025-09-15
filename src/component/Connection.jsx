@@ -15,7 +15,7 @@ const Connection = () => {
   const getConnection = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(BASE_URL + "/user/request/connection", {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/user/request/connection`, {
         withCredentials: true,
       });
       dispatch(addConnection(res.data.data || []));

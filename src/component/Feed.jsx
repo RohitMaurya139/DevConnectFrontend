@@ -10,7 +10,7 @@ const Feed = () => {
   const getFeed = async () => {
     if (feed) return;
     try {
-      const res = await axios.get(BASE_URL + "/user/feed", {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/user/feed`, {
         withCredentials: true,
       }); // <-- Add await here
       console.log("Feed data received:", res?.data);
